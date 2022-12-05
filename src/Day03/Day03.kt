@@ -28,19 +28,27 @@ fun main() {
     }
 
 
-    fun part2(input: String): Int {
-
-        val acc = ""
-        val grouped = input
-            .lines()
-            .take(3)
-
-        val found = grouped.first().toCharArray().find { char -> grouped[1].contains(char) && grouped[2].contains(char) }
-
-        println(found)
-        return 0
+    fun containsChar(c: Char, line:String):Boolean {
+        return line.contains(c)
     }
 
+    fun calculateResult(n: Int, input: String) : Int{
+
+        val grouped = input
+            .lines()
+            .chunked(3)
+
+        return grouped.sumOf {
+            it.first()
+                .toCharArray()
+                .first { char -> IntRange(1, n - 1).all { n -> containsChar(char, it[n]) } }
+                .toValue()
+        }
+    }
+
+    fun part2(input: String): Int {
+      return calculateResult(3, input)
+    }
 
     val testInput = File("src/Day03/test_data.txt").readText()
     println(part1(testInput))
