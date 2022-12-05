@@ -36,7 +36,7 @@ fun main() {
 
         val grouped = input
             .lines()
-            .chunked(3)
+            .chunked(n)
 
         return grouped.sumOf {
             it.first()
