@@ -29,16 +29,27 @@ fun main() {
 
 
     fun part2(input: String): Int {
-        TODO()
+
+        val acc = ""
+        val grouped = input
+            .lines()
+            .take(3)
+
+        val found = grouped.first().toCharArray().find { char -> grouped[1].contains(char) && grouped[2].contains(char) }
+
+        println(found)
+        return 0
     }
 
 
     val testInput = File("src/Day03/test_data.txt").readText()
     println(part1(testInput))
     check(part1(testInput) == 157)
+    check(part2(testInput) == 70 )
 
     val input = File("src/Day03/data.txt").readText()
     println(part1(input))
+    println(part2(input))
 
 }
 
