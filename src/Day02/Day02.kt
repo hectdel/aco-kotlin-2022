@@ -34,7 +34,7 @@ fun main() {
     check(part1(testInput) == 15)
     check(part2(testInput) == 12)
 
-    val input = File("src/Day02/Day02.txt").readText()
+    val input = File("src/Day02/data.txt").readText()
     println(part1(input))
     println(part2(input))
 }
